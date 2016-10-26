@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <base href="/"></base>
+    <title>Ian James Catering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Lusitana' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" type="text/css" href="/css/app.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="//demo.jankuri.com/ngGallery/src/css/ngGallery.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  </head>
+  <body> 
+
+<div class="headerBar">
+<span>T: <a href="tel:416.855.4488">416.855.4488</a> | E: <a href="mailto:order@ianjamescatering.com">order@ianjamescatering.com</a>
+</div>
+<div class="page">
+<div class="pageContent">
+<div class="logo">
+   <img src="img/logo.png" class="fullOnly">
+</div>
+<div class="navBarHolder fullOnly">
+<ul class="navBar">
+  <li ng-repeat="route in routes">
+    <a href="#{{route.location}}" ng-class="{currentNav: currentNav==route}">{{route.display}}</a>
+  </li>
+</ul>
+</div>
+<div class="mobileOnly mobileSelectContainer">
+  <div><select ng-model="routes.currentNav" ng-change="changeRoute(routes.currentNav)" ng-options="route.display for route in routes track by route.location" >  
+  </select></div>
+</div>
+    <div id="view" ng-view></div>
+    <script type="text/javascript" src="/js/app.js"></script>
+  </body>
+</html>
